@@ -1,0 +1,149 @@
+/* ==============================================
+   ESTILOS PARA NOTIFICACIONES
+   ============================================== */
+
+/* Contenedor principal */
+.notification-container {
+    position: relative;
+}
+
+/* Botón de la campana */
+.notification-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    padding: 0.5rem;
+    color: #94a3b8;
+}
+
+.notification-btn.active {
+    background-color: rgba(59, 130, 246, 0.2);
+    border-radius: 8px;
+}
+
+/* Badge contador */
+#notification-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 20px;
+    height: 20px;
+    background-color: #ef4444;
+    color: white;
+    border-radius: 10px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 0 6px;
+    border: 2px solid #1e293b;
+}
+
+/* Dropdown de notificaciones */
+#notification-list {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    min-width: 380px;
+    max-width: 420px;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: #1e293b;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 1000;
+    padding: 0;
+}
+
+#notification-list.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Item individual de notificación */
+.notification-item {
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+/* Ocultar título */
+.notification-title {
+    display: none;
+}
+
+/* Contenedor de la info */
+.notification-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+/* Cada fila de información */
+.notification-info-row {
+    font-size: 0.875rem;
+}
+
+/* Ocultar labels */
+.notification-info-label {
+    display: none;
+}
+
+/* Valores */
+.notification-info-value {
+    color: #e2e8f0;
+}
+
+/* Primera fila (descripción) en negrita */
+.notification-info-row:nth-child(1) .notification-info-value {
+    font-weight: 700;
+    color: #f1f5f9;
+    font-size: 0.9rem;
+}
+
+/* Segunda fila (monto) en azul */
+.notification-amount {
+    color: #60a5fa !important;
+    font-weight: 600 !important;
+}
+
+/* Tercera fila (fecha) */
+.notification-info-row:nth-child(3) .notification-info-value {
+    color: #94a3b8;
+    font-size: 0.8rem;
+}
+
+.notification-info-row:nth-child(3) .notification-info-value::before {
+    content: 'Vence el: ';
+}
+
+/* Mensaje cuando no hay notificaciones */
+.no-notifications {
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    color: #94a3b8;
+}
+
+/* Scrollbar */
+#notification-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+#notification-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#notification-list::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.5);
+    border-radius: 3px;
+}

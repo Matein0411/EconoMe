@@ -1,0 +1,173 @@
+/* =========================================
+   ESTILOS DE DETALLE DE LISTA (EconoMe)
+   ========================================= */
+
+/* --- 1. Encabezado y Layout --- */
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Badge del Total (Esquina superior derecha) */
+.total-badge {
+    background-color: var(--bg-med, #1a2233);
+    border: 1px solid var(--border-color, #374151);
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.total-label {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.total-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #3b82f6; /* Azul EconoMe */
+}
+
+/* --- 2. Mini Formulario (Agregar Item) --- */
+.mini-form-container {
+    background-color: var(--bg-med, #1a2233);
+    padding: 1.25rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color, #374151);
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.inline-form {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Wrappers para los inputs con iconos */
+.input-wrapper {
+    position: relative;
+    flex-grow: 1; /* El nombre ocupa el espacio disponible */
+}
+
+.input-wrapper.short {
+    flex-grow: 0;
+    flex-basis: 140px; /* Ancho fijo para el precio */
+}
+
+.input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+    pointer-events: none; /* Click atraviesa el icono */
+}
+
+/* Estilo de los Inputs */
+.form-control-custom {
+    width: 100%;
+    background-color: var(--bg-dark, #121826);
+    border: 1px solid var(--border-color, #374151);
+    color: #e2e8f0;
+    padding: 0.75rem 1rem 0.75rem 2.5rem; /* Padding extra a la izquierda para el icono */
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.form-control-custom:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* --- 3. Listado de Items (Grid/Tabla) --- */
+.items-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.item-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto; /* Checkbox | Nombre | Precio | Acciones */
+    align-items: center;
+    gap: 1.5rem;
+    background-color: var(--bg-med, #1a2233);
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.item-row:hover {
+    border-color: #3b82f6;
+    transform: translateX(5px);
+}
+
+.item-name {
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: #e2e8f0;
+}
+
+.item-price-tag {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: #60a5fa;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* --- 4. Componentes Pequeños --- */
+.checkbox-wrapper input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #3b82f6;
+}
+
+/* --- 5. Responsividad (Móvil) --- */
+@media (max-width: 600px) {
+    .inline-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .input-wrapper.short {
+        flex-basis: auto;
+    }
+
+    .item-row {
+        grid-template-columns: auto 1fr; /* Checkbox | Nombre */
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    /* En móvil, precio y acciones bajan a la siguiente "fila" visual */
+    .item-price-tag,
+    .item-actions {
+        grid-column: 2;
+        justify-self: end;
+    }
+
+    .item-price-tag {
+        grid-row: 1; /* El precio se queda arriba a la derecha */
+    }
+
+    .item-actions {
+        grid-row: 2; /* El botón de borrar baja */
+        margin-top: 5px;
+    }
+}

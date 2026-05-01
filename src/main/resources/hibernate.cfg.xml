@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.provider_class">org.hibernate.hikaricp.internal.HikariCPConnectionProvider</property>
+
+        <property name="hibernate.hikari.jdbcUrl">${hibernate.connection.url}</property>
+        <property name="hibernate.hikari.username">${hibernate.connection.username}</property>
+        <property name="hibernate.hikari.password">${hibernate.connection.password}</property>
+        <property name="hibernate.hikari.driverClassName">org.postgresql.Driver</property>
+
+        <property name="hibernate.hikari.maximumPoolSize">3</property>
+        <property name="hibernate.hikari.minimumIdle">0</property>
+
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <mapping class="com.EconoMe.movimientos.modelos.Movimiento"/>
+        <mapping class="com.EconoMe.movimientos.modelos.Gasto"/>
+        <mapping class="com.EconoMe.movimientos.modelos.Ingreso"/>
+        <mapping class="com.EconoMe.cuentas.modelos.Cuenta"/>
+        <mapping class="com.EconoMe.obligaciones.modelos.ObligacionFinanciera"/>
+        <mapping class="com.EconoMe.obligaciones.modelos.Prestamo"/>
+        <mapping class="com.EconoMe.obligaciones.modelos.Deuda"/>
+        <mapping class="com.EconoMe.recordatorios.modelos.Recordatorio"/>
+        <mapping class="com.EconoMe.listas_de_compras.modelos.ListaDeCompras"/>
+        <mapping class="com.EconoMe.listas_de_compras.modelos.ArticuloDeCompras"/>
+        <mapping class="com.EconoMe.plantillas.modelos.Plantilla"/>
+        <mapping class="com.EconoMe.resumen_financiero.modelos.DocumentoPDF"/>
+        <mapping class="com.EconoMe.resumen_financiero.modelos.ResumenFinanciero"/>
+    </session-factory>
+</hibernate-configuration>

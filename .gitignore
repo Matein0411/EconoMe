@@ -1,0 +1,12 @@
+target/
+.idea/
+.vscode/
+src/main/webapp/temp/
+.smarttomcat
+.war
+*.class
+*.iml
+.settings/
+.classpath
+.project
+.env

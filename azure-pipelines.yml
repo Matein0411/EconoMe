@@ -1,0 +1,63 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  javaVersion: '1.21'
+
+steps:
+# 1. Tarea de Maven - Ejecutar tests y generar cobertura
+- task: Maven@4
+  displayName: "Maven: Build and Test with Coverage"
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'clean test'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '$(javaVersion)'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
+
+  # 2. Publicar resultados de cobertura
+- task: PublishCodeCoverageResults@2
+  displayName: 'Publicar Code Coverage de JaCoCo'
+  inputs:
+    codeCoverageTool: 'JaCoCo'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/target/site/jacoco/jacoco.xml'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/target/site/jacoco'
+    failIfCoverageEmpty: false
+  condition: succeededOrFailed()
+
+  # 3. Compilar el paquete WAR
+- task: Maven@4
+  displayName: 'Maven: Package WAR'
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'package -DskipTests'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '$(javaVersion)'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
+
+# 4. Copiar el .war
+- task: CopyFiles@2
+  displayName: 'Copiar el archivo .war'
+  inputs:
+    SourceFolder: '$(system.defaultworkingdirectory)'
+    Contents: '**/*.war'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
+# 3. Publicar el artefacto
+- task: PublishBuildArtifacts@1
+  displayName: 'Publicar Artefacto (drop)'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'

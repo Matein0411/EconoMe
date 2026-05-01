@@ -1,0 +1,41 @@
+/* Estilos del header y marca */
+
+.topbar .brand {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* separación entre logo y texto */
+  text-decoration: none;
+}
+
+.topbar .brand-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.topbar .brand-text {
+  font-weight: 700;
+  font-size: 2.25rem; /* ~36px */
+  line-height: 1;
+}
+
+/* Opcional: ajustes del contenedor del header */
+.topbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  #notification-list {
+    width: 320px;
+    right: -20px;
+  }
+}

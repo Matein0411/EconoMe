@@ -1,0 +1,310 @@
+
+.plantillas-section {
+    /* Centrado y Ancho */
+    width: 100%;
+    max-width: 800px; /* <--- IMPORTANTE: Pon aquí el mismo valor que tiene tu .form-container en style.css */
+    margin: 30px auto 0 auto; /* El 'auto' a los lados es lo que lo centra */
+
+    /* Estilos visuales */
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-med);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+/* Cabecera clicable */
+.plantillas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    background-color: var(--bg-light); /* Fondo más claro para destacar */
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    user-select: none;
+    border-bottom: 1px solid transparent; /* Preparado para cuando se abra */
+}
+
+.plantillas-header:hover {
+    background-color: #3b4b63; /* Hover sutil según tu estilo previo */
+    border-color: var(--accent-primary);
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-title h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Badge contador */
+.header-title .badge {
+    background-color: var(--accent-primary);
+    color: white;
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 700;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Icono chevron */
+#chevronIcon {
+    color: var(--text-secondary);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.plantillas-header:hover #chevronIcon {
+    color: var(--accent-primary);
+}
+
+/* =========================================
+   2. Contenido Desplegable
+   ========================================= */
+#plantillasContent {
+    padding: 1.5rem;
+    background-color: var(--bg-med); /* Fondo oscuro principal */
+    border-top: 1px solid var(--border-color);
+}
+
+/* Cabecera interna (Texto y botón nueva) */
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.content-header p {
+    margin: 0;
+}
+
+/* =========================================
+   3. Grid de Tarjetas
+   ========================================= */
+.plantillas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Tarjeta individual */
+.plantilla-card {
+    background: var(--bg-light); /* Tarjeta destaca sobre el fondo med */
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1.25rem;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.plantilla-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    border-color: var(--accent-primary);
+}
+
+/* =========================================
+   4. Estilos Internos de la Tarjeta
+   ========================================= */
+/* Badge de Tipo */
+.tipo-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}
+
+.tipo-badge.ingreso {
+    background: rgba(46, 204, 113, 0.15);
+    color: #2ecc71; /* Verde brillante */
+}
+
+.tipo-badge.gasto {
+    background: rgba(231, 76, 60, 0.15);
+    color: #e74c3c; /* Rojo brillante */
+}
+
+/* Info principal */
+.card-info h4 {
+    margin: 0 0 5px 0;
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    padding-right: 60px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-info p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Monto */
+.card-monto {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 5px 0 10px 0;
+}
+
+.card-monto .ingreso { color: #2ecc71; }
+.card-monto .gasto { color: #e74c3c; }
+
+/* =========================================
+   5. Botones de Acción
+   ========================================= */
+.card-actions {
+    display: flex;
+    flex-direction: column; /* Apilados verticalmente para mejor control en móvil */
+    gap: 8px;
+    margin-top: auto;
+}
+
+/* Botón principal "Usar" */
+.card-actions .btn-primary {
+    width: 100%;
+    justify-content: center;
+    padding: 10px;
+    font-weight: 600;
+}
+
+/* Fila de acciones secundarias (Editar/Duplicar) */
+.secondary-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 5px;
+    border-top: 1px solid var(--border-color); /* Separador sutil */
+    padding-top: 8px;
+}
+
+/* Enlace minimalista */
+.btn-link-minimal {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-link-minimal:hover {
+    color: var(--accent-primary); /* Azul al hover */
+    text-decoration: none;
+}
+
+/* =========================================
+   6. Estado Vacío (Empty State)
+   ========================================= */
+.plantillas-empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0.7;
+}
+
+.plantillas-empty-state svg {
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+.plantillas-empty-state p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.plantillas-empty-state .subtext {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+/* =========================================
+   7. Estilos del Filtro (Alineación Perfecta)
+   ========================================= */
+.filters-container {
+    margin-bottom: 20px;
+}
+
+.filters-form {
+    display: flex;
+    align-items: flex-end; /* CLAVE: Alinea los elementos a la base (abajo) */
+    gap: 15px;             /* Espacio entre columnas */
+    width: 100%;
+}
+
+/* Grupos de Input + Label */
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;       /* Espacio entre label e input */
+    flex: 1;        /* Para que Nombre y Tipo ocupen el ancho disponible */
+}
+
+.filter-group label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-left: 2px;
+}
+
+/* Inputs y Selects del filtro */
+.filters-form input[type="text"],
+.filters-form select {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    width: 100%;       /* Ocupar todo el ancho de su grupo */
+    height: 42px;      /* Altura fija para alinear con botones */
+    outline: none;
+    transition: all 0.2s;
+}
+
+.filters-form input:focus,
+.filters-form select:focus {
+    border-color: var(--accent-primary);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Contenedor de botones */
+.filter-actions {
+    display: flex;
+    gap: 10px;
+    /* No necesita margin-top porque align-items: flex-end lo baja */
+}
+
+/* Ajuste de altura de los botones para igualar a los inputs */
+.filter-actions .btn {
+    height: 42px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
