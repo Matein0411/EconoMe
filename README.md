@@ -84,7 +84,7 @@ La aplicación está estructurada en módulos funcionales diseñados para cubrir
 * **🛒 Listas de Compra:** Planificación de gastos próximos para evitar compras impulsivas.
 * **📉 Resumen Financiero:** Análisis consolidado y reportes para la toma de decisiones.
 
-## 👥 Engineering Team
+## 👥 Team
 
 <p align="center">
   <img width="2238" height="669" alt="image" src="https://github.com/user-attachments/assets/d87e23fe-1aa8-4d92-b99c-2f09cb1e0307" />
